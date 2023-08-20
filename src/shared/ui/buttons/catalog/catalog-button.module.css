@@ -1,0 +1,12 @@
+.button {
+  width: 250px;
+  background-color: var(--secondary-color);
+  border: 0;
+  font-size: 22px;
+  transition: background-color 0.3s linear;
+}
+
+.button:hover {
+  background-color: var(--secondary-color-hover);
+  cursor: pointer;
+}

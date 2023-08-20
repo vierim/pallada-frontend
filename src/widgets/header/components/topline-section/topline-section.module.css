@@ -1,0 +1,36 @@
+.container {
+  padding: 16px 0 18px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.list {
+  display: flex;
+  justify-content: flex-start;
+  gap: 50px;
+  height: 100%;
+  padding-inline: 0 15px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item:last-of-type {
+  margin-left: auto;
+}
+
+.text {
+  font-size: 18px;
+}
+
+.email {
+  text-decoration: underline;
+  font-size: 18px;
+  transition: color 0.3s linear;
+}
+
+.email:hover {
+  color: var(--primary-color);
+}
