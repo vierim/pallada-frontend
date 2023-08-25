@@ -1,0 +1,48 @@
+.container {
+  width: 360px;
+  position: relative;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: border-color 0.3s linear;
+}
+
+.container:hover {
+  border-color: var(--secondary-color-hover);
+}
+
+
+
+.desc {
+  width: 100%;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.name {
+  font-size: 22px;
+  min-height: 53px;
+}
+
+.char {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 18px;
+}
+
+.label {
+  font-size: 14px;
+  color: gray;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 600;
+}
