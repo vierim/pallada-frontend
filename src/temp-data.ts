@@ -1,3 +1,5 @@
+import { Product } from "./entities/product/types";
+
 export const catalogItems = [
   {
     id: 1,
@@ -46,5 +48,74 @@ export const catalogItems = [
     title: 'Ирис',
     slug: 'iris',
     pic: 'catalog/iris.jpg',
+  },
+];
+
+export const mainPage = {
+  cover: '',
+  text: {
+    headline: 'Кондитерка крупным и мелким оптом',
+    pic: '',
+    content: [
+      'Оптовая продажа кондитерских изделий – специализация нашей компании. Мы располагаем широким ассортиментом продукции ведущих российских фабрик. Вы в любое время можете осуществить заказ, позвонив нам в офис, либо оставив заявку на электронную почту. Помимо оптовых цен в прайс­листе с каждым клиентом оговаривается дополнительная скидка в зависимости от объема заказа.',
+      'Мы заключаем договоры на поставку кондитерских изделий оптом в Москву и Московскую область.',
+      'Мы будем рады предложить Вам качественную продукцию по доступным ценам.',
+    ],
+  },
+};
+
+export const porducts: Product[] = [
+  {
+    id: '0001',
+    name: 'Печенье "Ювелирное"',
+    url: '/cookie/morozov/165/',
+    pic: '/img/goods/165.png',
+    pack: {
+      size: 6,
+      unit: 'кг/гофро',
+    },
+    price: {
+      value: 222,
+      unit: 'руб/кг',
+    },
+    vendor: 'Кондитерские изделия Морозова',
+    rating: 5,
+    religion: false,
+  },
+  {
+    id: '0002',
+    name: 'Печенье "Пломбирчики" в белой глазури',
+    url: '/cookie/elit-konditer/791/',
+    pic: '/img/goods/791.jpg',
+    pack: {
+      size: 2.6,
+      unit: 'кг/тел',
+    },
+    price: {
+      value: 343,
+      unit: 'руб/кг',
+    },
+    vendor: 'Элит Кондитерский дом',
+    rating: 5,
+    bestSeller: true,
+    religion: false,
+  },
+  {
+    id: '0003',
+    name: 'Печенье Обедница с джемом вишня и чернослив постное',
+    url: '/cookie/vozrozhdenie/1501/',
+    pic: '/img/goods/1501.jpg',
+    pack: {
+      size: 3,
+      unit: 'кг/тел',
+    },
+    price: {
+      value: 294,
+      unit: 'руб/кг',
+    },
+    vendor: 'Возрождение Фабрика домашней выпечки',
+    rating: 4.5,
+    religion: true,
+    newProduct: true,
   },
 ];
