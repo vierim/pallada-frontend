@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import { Cover } from '@/widgets/cover';
 import { 
   CatalogSection,

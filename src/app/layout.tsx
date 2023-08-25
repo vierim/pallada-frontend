@@ -2,6 +2,7 @@ import { Header } from '@/widgets/header';
 import type { Metadata } from 'next';
 
 import './globals.css';
+import { Footer } from '@/widgets/footer';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,7 +19,8 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
-  )
+  );
 };

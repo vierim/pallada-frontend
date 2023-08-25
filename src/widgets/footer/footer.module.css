@@ -1,0 +1,38 @@
+.footer {
+  color: #e8e8e8;
+  background-color: var(--primary-color-dark);
+  /* padding: 50px 0; */
+}
+
+.container {
+  display: flex;
+  gap: 60px;
+  padding: 50px 0 60px;
+}
+
+
+
+.column:last-of-type {
+  margin-left: auto;
+}
+
+.headline {
+  color: #ffffff;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  font-size: 20px;
+}
+
+.bottom {
+  padding: 30px 0 80px;
+  border-top: 1px solid #bdbdbd;
+  justify-content: space-between;
+}

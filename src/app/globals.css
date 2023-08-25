@@ -3,6 +3,7 @@
   --secondary-color: #f8af66;
   --secondary-color-hover: #f49b42;
   --primary-color-light: #004a4e;
+  --primary-color-dark: #043335;
   --light-color: #ffffff;
 }
 
@@ -40,4 +41,10 @@ h2 {
   font-weight: 400;
   text-align: center;
   margin-bottom: 50px;
+}
+
+h4 {
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 30px;
 }
