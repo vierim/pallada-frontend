@@ -1,0 +1,10 @@
+.content {
+  padding-inline: 50px;
+  margin-bottom: 100px;
+}
+
+.content p {
+  font-size: 18px;
+  margin-bottom: 8px;
+  line-height: 28px;
+}
