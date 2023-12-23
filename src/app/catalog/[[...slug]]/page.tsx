@@ -1,12 +1,13 @@
-import styles from './page.module.css';
 import { BreadCrumps } from '@/widgets/breadcrumps';
-import { getBreadCrumps } from '@/helpers/getBreadCrumps';
 import { ProductsList } from '@/entities/product/ui/products-list';
-import { Pagination } from "@/widgets/pagination";
+import { Pagination } from '@/widgets/pagination';
+import { getBreadCrumps } from '@/helpers/getBreadCrumps';
+
+import styles from './page.module.css';
 
 type CatalogPageProps = {
   params: {
-    slug: string;
+    slug: string[];
   };
 };
 
@@ -22,13 +23,12 @@ async function getData(slug: string) {
   return res.json();
 }
 
-async function getProducts(slug: string) {
+async function getProducts(slug: string, pageNumber: string) {
   const res = await fetch(
-    `https://api.pallada-mo.ru/api/products?populate=*&filters[categories][slug][$in]=${slug}&pagination[page]=1&pagination[pageSize]=15`
+    `https://api.pallada-mo.ru/api/products?populate=*&filters[categories][slug][$in]=${slug}&pagination[page]=${pageNumber}&pagination[pageSize]=15`
   );
 
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');
   }
 
@@ -36,10 +36,15 @@ async function getProducts(slug: string) {
 }
 
 export default async function ProductPage({
-  params: { slug },
+  params: { slug: items },
 }: CatalogPageProps) {
+  const [slug, pageNumber] = items;
+
   const { data } = await getData(slug);
-  const { data: productsData, meta: { pagination: pagination } } = await getProducts(slug);
+  const {
+    data: productsData,
+    meta: { pagination: pagination },
+  } = await getProducts(slug, pageNumber ? pageNumber.slice(4) : '1');
   const breadcrumps = getBreadCrumps(data.attributes);
 
   const products = productsData.map((item: any) => ({
@@ -66,15 +71,17 @@ export default async function ProductPage({
         <BreadCrumps breadcrumps={breadcrumps} />
       </div>
 
-      <h1 className={styles.headline}>{data[0].attributes.header}</h1>
+      <h1 className={styles.headline}>{data[0]?.attributes.header}</h1>
 
       <section className={'page-section'}>
         <ProductsList products={products} />
       </section>
 
-      <section className={styles.pagination}>
-        <Pagination pagination={pagination} />
-      </section>
+      {pagination.pageCount > 1 && (
+        <section className={styles.pagination}>
+          <Pagination slug={slug} pagination={pagination} />
+        </section>
+      )}
     </main>
   );
 }
