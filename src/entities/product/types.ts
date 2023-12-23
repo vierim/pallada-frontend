@@ -13,7 +13,6 @@ export type Product = {
     oldValue?: number,
   };
   vendor: string;
-  rating?: number;
   discount?: number;
   religion?: boolean;
   bestSeller?: boolean;

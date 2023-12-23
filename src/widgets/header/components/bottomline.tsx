@@ -10,7 +10,7 @@ export const BottomlineSection = () => {
       <div className={`${styles.row} page-section`}>
         <CatalogButton />
         <MainMenu />
-        <Basket variant='informer' />
+        {/* <Basket variant='informer' /> */}
       </div>
     </div>
   );

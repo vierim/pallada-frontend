@@ -2,13 +2,16 @@ import { Logo } from "@/shared/ui/logo";
 import { SearchBox } from "@/widgets/search-box";
 
 import styles from "./midline-section.module.css";
+import Link from "next/link";
 
 export const MidlineSection = () => {
   return (
     <div className={styles.container}>
       <div className={`${styles.row} page-section`}>
         <span className={styles.logo}>
-          <Logo />
+          <Link href='/'>
+            <Logo />
+          </Link>
         </span>
         <SearchBox />
         <span className={styles.phone}>

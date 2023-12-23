@@ -3,25 +3,23 @@ import Image from "next/image";
 
 import styles from './catalog.module.css';
 
-import { catalogItems } from "@/temp-data";
-
-export const CatalogSection = () => {
+export const CatalogSection = ({ categories }: any) => {
   return (
     <section className={`${styles.container} page-section`}>
       <ul className={styles.list}>
-        {catalogItems.map(({ id, title, slug, pic }) => {
+        {categories.map((item: any) => {
           return (
-            <li key={id} className={styles.item}>
-              <Link href={`/catalog/${slug}`}>
+            <li key={item.id} className={styles.item}>
+              <Link href={`/catalog/${item.attributes.slug}`}>
                 <article className={styles.section}>
-                  <Image 
-                    src={`/img/${pic}`}
-                    alt={title}
+                  <Image
+                    src={item.attributes.pic.data?.attributes.url || ''}
+                    alt={item.attributes.name}
                     width={260}
                     height={195}
                     className={styles.img}
                   />
-                  <span className={styles.title}>{title}</span>
+                  <span className={styles.title}>{item.attributes.name}</span>
                 </article>
               </Link>
             </li>

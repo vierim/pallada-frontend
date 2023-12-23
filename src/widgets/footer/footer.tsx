@@ -9,7 +9,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={`${styles.container} page-section`}>
         <div className={styles.column}>
-          <h4 className={styles.headline}>О компании</h4>
+          <h4 className={styles.headline}>О&nbsp;компании</h4>
           <nav>
             <ul className={styles.list}>
               <li className={styles.item}>
@@ -60,7 +60,9 @@ export const Footer = () => {
       </div>
       <div className={`${styles.container} ${styles.bottom} page-section`}>
         <Copyright />
-        <Link href="/policy">Политика конфиденциальности</Link>
+        <Link href="/policy" className={styles.policy}>
+          Политика конфиденциальности
+        </Link>
       </div>
     </footer>
   );

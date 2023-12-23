@@ -1,10 +1,24 @@
+.container {
+  width: 100%;
+  background-color: #f4f4f4;
+  margin-bottom: 60px;
+}
+
 .content {
-  padding-inline: 50px;
-  margin-bottom: 100px;
+  /* padding-inline: 50px; */
+  
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.headline {
+  padding: 0;
+  margin: 0 0 40px;
 }
 
 .content p {
   font-size: 18px;
   margin-bottom: 8px;
   line-height: 28px;
+  font-weight: 400;
 }

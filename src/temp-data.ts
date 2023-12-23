@@ -68,7 +68,7 @@ export const porducts: Product[] = [
   {
     id: '0001',
     name: 'Печенье "Ювелирное"',
-    url: '/cookie/morozov/165/',
+    url: '/product/818/',
     pic: '/img/goods/165.png',
     pack: {
       size: 6,
@@ -85,7 +85,7 @@ export const porducts: Product[] = [
   {
     id: '0002',
     name: 'Печенье "Пломбирчики" в белой глазури',
-    url: '/cookie/elit-konditer/791/',
+    url: '/product/921/',
     pic: '/img/goods/791.jpg',
     pack: {
       size: 2.6,
@@ -103,7 +103,7 @@ export const porducts: Product[] = [
   {
     id: '0003',
     name: 'Печенье Обедница с джемом вишня и чернослив постное',
-    url: '/cookie/vozrozhdenie/1501/',
+    url: '/product/1265/',
     pic: '/img/goods/1501.jpg',
     pack: {
       size: 3,
