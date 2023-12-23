@@ -1,0 +1,29 @@
+.list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.item {
+  position: relative;
+}
+
+.item:not(:first-of-type):before {
+  content: '/';
+  position: absolute;
+  top: 0;
+  left: -11px;
+  color: #4f4f4f;
+}
+
+.link {
+  color: #4f4f4f;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.name {
+  color: #adb5bd;
+}
