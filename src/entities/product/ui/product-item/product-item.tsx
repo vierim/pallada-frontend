@@ -5,6 +5,7 @@ import type { Product } from '../../types';
 
 import styles from './product-item.module.css';
 import { FavouritesToggleButton } from '@/features/favourites/ui/toggle-button';
+import { Button } from "@/shared/ui/button";
 
 type ProductItemProps = Product;
 
@@ -73,16 +74,8 @@ export const ProductItem = ({
         </div>
 
         <div className={styles.buttonContainer}>
-          <input
-            type="button"
-            value="В корзину"
-            className={styles.cartButton}
-          />
-          <input
-            type="button"
-            value="Подробнее"
-            className={styles.moreButton}
-          />
+          <Button view="filled" text="В корзину" title="Добавить товар в корзину" />
+          <Button view="flat" text="Подробнее" />
         </div>
       </article>
     </Link>
