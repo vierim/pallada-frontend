@@ -1,10 +1,12 @@
 import Image from 'next/image';
 
 import { BreadCrumps } from '@/widgets/breadcrumps';
+import { ProductItem } from '@/entities/product/ui/product-item';
+import { Button } from '@/shared/ui/button';
+
 import { getBreadCrumps } from '@/helpers/getBreadCrumps';
 
 import styles from './page.module.css';
-import { ProductItem } from '@/entities/product/ui/product-item';
 
 type ProductPageProps = {
   params: {
@@ -41,12 +43,12 @@ export default async function ProductPage({
 }: ProductPageProps) {
   const { data } = await getData(parseInt(id));
   const { data: products } = await getProducts(data.attributes.brand.data.id);
-  const breadcrumps = getBreadCrumps(data.attributes);
+  const breadcrumbs = getBreadCrumps(data.attributes);
 
   return (
     <main className={`${styles.container} page-section`}>
       <div className={styles.breadcrumps}>
-        <BreadCrumps breadcrumps={breadcrumps} />
+        <BreadCrumps breadcrumps={breadcrumbs} />
       </div>
 
       <h1 className={styles.headline}>{data.attributes.name}</h1>
@@ -60,6 +62,12 @@ export default async function ProductPage({
           height={421}
         />
         <div className={styles.info}>
+          <p className={styles.pricing}>
+            Розничная цена -{' '}
+            <span className={styles.price}>
+                {data.attributes.price_value} руб/{data.attributes.price_unit}
+              </span>
+          </p>
           <ul className={styles.params}>
             <li className={styles.char}>
               <span className={styles.label}>Производитель</span>
@@ -75,11 +83,10 @@ export default async function ProductPage({
               {data.attributes.delay}
             </li>
           </ul>
-        </div>
-        <div className={styles.ordering}>
-          <div>Розничная цена - 123</div>
-          <button>Добавить в корзину</button> Купить в 1 клик Получить оптовую
-          цену
+          <div className={styles.buttons}>
+            <Button view="filled" text="Добавить в корзину" />
+            <Button view="action" text="Получить оптовую цену" />
+          </div>
         </div>
       </div>
       <div className={`${styles.proposals} page-section`}>
