@@ -1,11 +1,16 @@
+.bar {
+  position: relative;
+}
+
 .input {
   width: 650px;
   height: 60px;
-  font-size: 22px;
+  font-size: 24px;
+  font-weight: 300;
   border: 1px solid #dcdcdc;
   border-radius: 8px;
   padding: 0 25px;
-  outline: red;
+  outline: none;
   transition: all 0.3s linear;
 }
 
@@ -14,5 +19,13 @@
 }
 
 .input:focus {
-  border-color: var(--primary-color);  
+  border-color: var(--primary-color);
+}
+
+.control {
+  position: absolute;
+  top: 17px;
+  right: 15px;
+  width: 24px;
+  height: 24px;
 }
