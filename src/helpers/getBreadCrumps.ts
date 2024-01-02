@@ -19,9 +19,9 @@ export const getBreadCrumps = (data: any) => {
   };
 
   items.push({ _id: 0, title: 'Главная', url: '/' });
-  items.push({ _id: 1, title: 'Каталог продукции', url: '/catalog' });
 
   if (category.name.length > 0) {
+    items.push({ _id: 1, title: 'Каталог продукции', url: '/catalog' });
     const lastPageUrl = items[items.length - 1].url;
 
     items.push({

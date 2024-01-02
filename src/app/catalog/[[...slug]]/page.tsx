@@ -35,7 +35,7 @@ async function getProducts(slug: string, pageNumber: string) {
   return res.json();
 }
 
-export default async function ProductPage({
+export default async function CatalogPage({
   params: { slug: items },
 }: CatalogPageProps) {
   const [slug, pageNumber] = items;
