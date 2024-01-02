@@ -32,3 +32,4 @@ export { ClockIcon } from './clock-icon';
 export { EmailIcon } from './email-icon';
 export { FavouritesIcon } from './favourites-icon';
 export { LocationIcon } from './location-icon';
+export { CloseIcon } from './close-icon';

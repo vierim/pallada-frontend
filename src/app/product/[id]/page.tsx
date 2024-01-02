@@ -58,15 +58,15 @@ export default async function ProductPage({
           className={styles.pic}
           src={data.attributes.pic.data?.attributes.url || ''}
           alt={data.attributes.name || 'none provided'}
-          width={500}
-          height={421}
+          width={300}
+          height={300}
         />
         <div className={styles.info}>
           <p className={styles.pricing}>
             Розничная цена -{' '}
             <span className={styles.price}>
-                {data.attributes.price_value} руб/{data.attributes.price_unit}
-              </span>
+              {data.attributes.price_value} руб/{data.attributes.price_unit}
+            </span>
           </p>
           <ul className={styles.params}>
             <li className={styles.char}>
