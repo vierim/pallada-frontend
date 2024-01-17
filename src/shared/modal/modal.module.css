@@ -1,0 +1,39 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  background-color: #1e1e1e;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.6;
+  z-index: 2;
+}
+
+.modal {
+  position: relative;
+  z-index: 3;
+  padding: 30px;
+  background-color: #fff;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 0;
+  right: -55px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+}

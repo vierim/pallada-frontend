@@ -1,0 +1,11 @@
+.container {
+  position: absolute;
+  top: 60px;
+  left: 40px;
+  right: 40px;
+  width: 100%;
+  max-width: 1340px;
+
+  background-color: red;
+  z-index: 10;
+}

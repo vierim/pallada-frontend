@@ -16,7 +16,7 @@ export const Cover = () => {
       />
       <div className={`${styles.content} page-section`}>
         <h1 className={styles.headline}>Кондитерские изделия оптом</h1>
-        <p className={styles.subline}>Скидки до 25% для оптовых покупателей!</p>
+        <p className={styles.sub}>Скидки до 25% для оптовых покупателей!</p>
         <Button view="action" text="Получить оптовый прайс-лист" size="l" />
       </div>
     </section>

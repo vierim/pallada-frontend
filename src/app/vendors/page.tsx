@@ -1,41 +1,31 @@
 import Link from 'next/link';
-import styles from '@/app/product/[id]/page.module.css';
-import { BreadCrumps } from '@/widgets/breadcrumps';
-import { getBreadCrumps } from '@/helpers/getBreadCrumps';
 
-async function getVendors() {
-  const res = await fetch(`https://api.pallada-mo.ru/api/brands`);
+import { PageHeader } from '@/shared/ui/page-header';
+import { getAllVendors } from '@/entities/vendor/utils';
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
-  return res.json();
-}
+import styles from './page.module.css';
 
 export default async function VendorsPage() {
-  const breadcrumbs = getBreadCrumps([]);
-  const { data: vendors } = await getVendors();
+  const vendors = await getAllVendors();
 
   return (
-    <main className={`${styles.container} page-section`}>
-      <div className={styles.breadcrumps}>
-        <BreadCrumps breadcrumps={breadcrumbs} />
-      </div>
+    <div>
+      <PageHeader>Производители кондитерских изделий</PageHeader>
 
-      <h1 className={styles.headline}>Производители кондитерских изделий</h1>
-
-      <ul>
-        {vendors.map((item: any) => {
+      <ul className={styles.list}>
+        {vendors.map((item) => {
           return (
-            <li key={item.id}>
-              <Link href={`/vendors/${item.attributes.slug}`}>
+            <li key={item.id} className={styles.item}>
+              <Link
+                href={`/vendors/${item.attributes.slug}`}
+                className={styles.link}
+              >
                 {item.attributes.name}
               </Link>
             </li>
           );
         })}
       </ul>
-    </main>
+    </div>
   );
 }

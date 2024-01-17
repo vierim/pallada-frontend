@@ -7,3 +7,13 @@
   fill: #5d5d5d;
   cursor: pointer;
 }
+
+.light {
+  fill: #ffffff;
+  transition: fill 0.3s linear;
+}
+
+.light:hover {
+  fill: #dcdcdc;
+  cursor: pointer;
+}

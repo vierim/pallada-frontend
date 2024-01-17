@@ -1,5 +1,7 @@
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
+import { Modal } from '@/shared/modal/modal';
+import { PriceForm } from "@/widgets/price-form";
 
 import './globals.css';
 
@@ -14,6 +16,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+
+        <PriceForm />
       </body>
     </html>
   );

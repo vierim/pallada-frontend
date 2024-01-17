@@ -1,0 +1,47 @@
+.item {
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 0.2s linear;
+  box-shadow: 0 2px 8px 1px rgba(34, 60, 80, 0.1);
+}
+
+.item:hover {
+  border-color: var(--secondary-color-hover);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding-top: 20px;
+}
+
+.img {
+  transition: scale 0.3s linear;
+}
+
+.item:hover .img {
+  scale: 103%;
+}
+
+.name {
+  display: block;
+  width: 100%;
+  padding: 15px 10px;
+  border-top: 1px solid #e2e2e2;
+  text-align: center;
+  color: #000000;
+  font-size: 22px;
+  transition: all 0.2s ease-in-out;
+}
+
+.name:hover {
+  text-decoration: underline;
+}
+
+.item:hover .name {
+  border-top-color: var(--secondary-color-hover);
+}

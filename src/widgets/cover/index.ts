@@ -1,1 +1,3 @@
-export { Cover } from './cover';
+import { Cover } from './cover';
+
+export { Cover };

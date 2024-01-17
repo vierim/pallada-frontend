@@ -9,6 +9,7 @@ type ButtonProps = {
   text: string;
   title?: string;
   onClick?: () => void;
+  extClassName?: string;
 };
 
 export const Button = ({
@@ -17,8 +18,9 @@ export const Button = ({
   text,
   title,
   onClick,
+  extClassName,
 }: ButtonProps) => {
-  let elementStyles = styles.button;
+  let elementStyles = styles.button + ' ' + extClassName;
 
   switch (view) {
     case 'action':
@@ -49,6 +51,8 @@ export const Button = ({
       elementStyles += ' ' + styles['size_xl'];
       break;
   }
+
+  elementStyles += ' ' + extClassName;
 
   return (
     <button

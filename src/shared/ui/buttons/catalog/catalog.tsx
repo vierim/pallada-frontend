@@ -1,5 +1,16 @@
 import styles from './catalog-button.module.css';
 
-export const CatalogButton = () => {
-  return <input type="button" value="Каталог продукции" className={styles.button} />
+type CatalogButtonProps = {
+  onClick: () => void;
+};
+
+export const CatalogButton = ({ onClick }: CatalogButtonProps) => {
+  return (
+    <input
+      type="button"
+      value="Каталог продукции"
+      onClick={onClick}
+      className={styles.button}
+    />
+  );
 };

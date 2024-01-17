@@ -1,28 +1,29 @@
+.pagination {
+  margin: 50px 0 20px;
+}
+
 .list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
+  list-style: none;
+  margin: 50px 0 20px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
-
-.item {
-
-
-}
-
-
 
 .link {
-    display: block;
-    /*border: 1px solid var(--primary-color);*/
-    padding: 8px 12px;
-    font-size: 18px;
+  display: block;
+  padding: 8px 12px;
+  font-size: 18px;
+  transition: background-color 0.3s linear;
+}
+
+.link:hover {
+  background-color: rgb(23, 105, 109, 0.1);
 }
 
 .current {
-    background-color: var(--primary-color);
-    color: #ffffff;
+  background-color: var(--primary-color);
+  color: #ffffff;
 }

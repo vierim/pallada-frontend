@@ -1,14 +1,19 @@
-import Link from "next/link";
-import type { TPagination } from "./types";
+import Link from 'next/link';
+import type { TPagination } from './types';
+
 import styles from './pagination.module.css';
 
 type PaginationProps = {
+  entity?: 'catalog' | 'vendors';
   slug: string;
   pagination: TPagination;
 };
 
-export const Pagination = ({ slug, pagination }: PaginationProps) => {
-
+export const Pagination = ({
+  entity = 'catalog',
+  slug,
+  pagination,
+}: PaginationProps) => {
   const { page: currentPage, pageCount } = pagination;
   const pages = Array.from(Array(pageCount).keys());
 
@@ -19,7 +24,10 @@ export const Pagination = ({ slug, pagination }: PaginationProps) => {
 
         return (
           <li key={page} className={page === currentPage ? styles.current : ''}>
-            <Link href={`/catalog/${slug}/page${page}`} className={styles.link}>
+            <Link
+              href={`/${entity}/${slug}/page${page}`}
+              className={styles.link}
+            >
               {page}
             </Link>
           </li>
