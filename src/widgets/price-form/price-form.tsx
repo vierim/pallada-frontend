@@ -1,6 +1,8 @@
-import styles from './price-form.module.css';
 import { Button } from '@/shared/ui/button';
 import { Modal } from '@/shared/modal/modal';
+
+import styles from './price-form.module.css';
+
 export const PriceForm = () => {
   return (
     <Modal title="Запрос оптового прайс-листа">

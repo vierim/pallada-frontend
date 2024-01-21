@@ -1,9 +1,14 @@
+import { Suspense } from 'react'
+
 import { Header } from '@/widgets/header';
 import { Footer } from '@/widgets/footer';
-import { Modal } from '@/shared/modal/modal';
 import { PriceForm } from "@/widgets/price-form";
 
 import './globals.css';
+
+function SearchBarFallback() {
+  return <>placeholder</>
+}
 
 export default function RootLayout({
   children,
@@ -17,7 +22,9 @@ export default function RootLayout({
         {children}
         <Footer />
 
-        <PriceForm />
+        <Suspense fallback={<SearchBarFallback />}>
+          <PriceForm />
+        </Suspense>
       </body>
     </html>
   );

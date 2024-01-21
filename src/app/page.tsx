@@ -4,14 +4,12 @@ import { Cover } from '@/widgets/cover';
 import {
   CatalogSection,
   TextSection,
-  PopularProducts,
 } from '@/widgets/page-sections';
 
 import styles from './page.module.css';
 
 // Отказать от использования моковых данных
-import { mainPage, porducts } from '@/temp-data';
-import { Modal } from '@/shared/modal/modal';
+import { mainPage } from '@/temp-data';
 
 export const metadata: Metadata = {
   title: 'Pallada',
@@ -27,8 +25,6 @@ export default async function Home() {
         text={mainPage.text.content}
         headline={mainPage.text.headline}
       />
-      {/*<PopularProducts headline="Популярные товары" products={porducts} />*/}
-
     </main>
   );
 }
