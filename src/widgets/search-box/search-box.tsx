@@ -47,7 +47,6 @@ export const SearchBox = () => {
 
     if (state.length > 2) {
       getProducts(state).then(({ data, meta }) => {
-        // console.log(data);
         setTotalCount(meta.pagination.total);
         const x = data.map((item: any) => {
           return {
@@ -57,7 +56,7 @@ export const SearchBox = () => {
             pic: '',
           };
         });
-        // console.log(x);
+
         setResults(x);
         setShowSuggests(true);
       });

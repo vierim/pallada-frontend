@@ -30,7 +30,7 @@ export default async function ProductPage({
     delay }
     = await getProductData(parseInt(id));
 
-  const relativeProducts = await getRelativeProductsByBrand(brand.id);
+  const relativeProducts = await getRelativeProductsByBrand(parseInt(id), brand.id);
 
   return (
     <div>

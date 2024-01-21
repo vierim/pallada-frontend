@@ -12,7 +12,7 @@ const composeProductObject = (
   id,
   name: product.name,
   url: `/product/${id}`,
-  pic: product.pic.data.attributes.url,
+  pic: product.pic.data?.attributes.url,
   pack: {
     size: product.pack_size,
     unit: product.pack_unit,
@@ -58,13 +58,31 @@ export async function getProductData(id: number) {
   return ejectOneProductData(res);
 }
 
-export async function getProducts(
-  categorySlug: string,
+export async function getProductsByCategory(
+  slug: string,
   pageNumber: string,
   pageSize: number = 15
 ) {
   const request = await fetch(
-    `https://api.pallada-mo.ru/api/products?populate=*&filters[categories][slug][$in]=${categorySlug}&pagination[page]=${pageNumber}&pagination[pageSize]=${pageSize}`
+    `https://api.pallada-mo.ru/api/products?populate=*&filters[categories][slug][$in]=${slug}&pagination[page]=${pageNumber}&pagination[pageSize]=${pageSize}`
+  );
+
+  if (!request.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  const res: ManyProductsResponse = await request.json();
+
+  return { products: ejectManyProductsData(res), pagination: res.meta.pagination };
+}
+
+export async function getProductsByBrand(
+  slug: string,
+  pageNumber: string,
+  pageSize: number = 100
+) {
+  const request = await fetch(
+    `https://api.pallada-mo.ru/api/products?populate=*&filters[brand][slug][$in]=${slug}&pagination[page]=${pageNumber}&pagination[pageSize]=${pageSize}`
   );
 
   if (!request.ok) {
@@ -77,11 +95,12 @@ export async function getProducts(
 }
 
 export async function getRelativeProductsByBrand(
+  current: number,
   brand: number,
   limit: number = 3
 ) {
   const request = await fetch(
-    `https://api.pallada-mo.ru/api/products?populate=*&filters[brand][id][$eq]=${brand}&pagination[start]=0&pagination[limit]=${limit}`
+    `https://api.pallada-mo.ru/api/products?populate=*&filters[brand][id][$eq]=${brand}&filters[id][$nei]=${current}&pagination[start]=0&pagination[limit]=${limit}`
   );
 
   if (!request.ok) {

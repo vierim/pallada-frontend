@@ -42,7 +42,7 @@ export const ProductItem = ({
         </Link>
         <span className={styles.char}>
           <span className={styles.label}>Производитель</span>
-          {brand.name}
+          {brand?.name}
         </span>
         <span className={styles.char}>
           <span className={styles.label}>Упаковка</span>
@@ -63,7 +63,7 @@ export const ProductItem = ({
           text="В корзину"
           title="Добавить товар в корзину"
         />
-        <Link href={url}>
+        <Link href={url} className={styles.moreButton}>
           Подробнее
         </Link>
       </div>

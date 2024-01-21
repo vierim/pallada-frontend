@@ -1,7 +1,8 @@
 import { PageHeader } from '@/shared/ui/page-header';
 import { ProductsList } from '@/entities/product/ui/products-list';
 import { Pagination } from '@/widgets/pagination';
-import { getProducts } from '@/entities/product/utils';
+
+import { getProductsByCategory } from '@/entities/product/utils';
 import { getCategoryData } from '@/entities/category/utils';
 
 type CatalogPageProps = {
@@ -16,7 +17,7 @@ export default async function CatalogPage({
   const [slug, pageNumber] = items;
 
   const { header, name } = await getCategoryData(slug);
-  const { products, pagination } = await getProducts(
+  const { products, pagination } = await getProductsByCategory(
     slug,
     pageNumber ? pageNumber.slice(4) : '1'
   );

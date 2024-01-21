@@ -1,12 +1,6 @@
 .list {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 40px;
-}
-
-.item {
-  flex: 0 0 auto;
-  width: calc(100% / 3 - 30px);
-  min-width: 320px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
