@@ -31,12 +31,13 @@ const composeProductObject = (
   isOrthodox: product.isOrthodox,
   isHit: product.isHit,
   isNew: product.isNew,
+  meta_title: product.meta_title || product.name,
+  meta_description: product.meta_description || '',
+  header: product.header || product.name,
 });
 
 const ejectOneProductData = (response: OneProductResponse): Product => {
   const { id, attributes: product } = response.data;
-
-  //console.log(composeProductObject(id, product));
 
   return composeProductObject(id, product);
 };
@@ -73,13 +74,16 @@ export async function getProductsByCategory(
 
   const res: ManyProductsResponse = await request.json();
 
-  return { products: ejectManyProductsData(res), pagination: res.meta.pagination };
+  return {
+    products: ejectManyProductsData(res),
+    pagination: res.meta.pagination,
+  };
 }
 
 export async function getProductsByBrand(
   slug: string,
   pageNumber: string,
-  pageSize: number = 100
+  pageSize: number = 15
 ) {
   const request = await fetch(
     `https://api.pallada-mo.ru/api/products?populate=*&filters[brand][slug][$in]=${slug}&pagination[page]=${pageNumber}&pagination[pageSize]=${pageSize}`
@@ -91,7 +95,10 @@ export async function getProductsByBrand(
 
   const res: ManyProductsResponse = await request.json();
 
-  return { products: ejectManyProductsData(res), pagination: res.meta.pagination };
+  return {
+    products: ejectManyProductsData(res),
+    pagination: res.meta.pagination,
+  };
 }
 
 export async function getRelativeProductsByBrand(

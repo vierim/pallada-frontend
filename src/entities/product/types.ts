@@ -21,6 +21,9 @@ export type Product = {
   isOrthodox: boolean;
   isHit: boolean;
   isNew: boolean;
+  meta_title?: string | null;
+  meta_description?: string | null;
+  header?: string | null;
 };
 
 export type ProductAttributes = {
