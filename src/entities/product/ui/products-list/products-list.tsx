@@ -11,7 +11,6 @@ export const ProductsList = ({ products }: ProductsListProps) => {
   return (
     <ul className={styles.list}>
       {products.map((product: Product) => {
-        console.log(product);
         return (
           <li key={product.id}>
             <ProductItem {...product} />
