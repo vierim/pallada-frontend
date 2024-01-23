@@ -21,13 +21,12 @@ export const Pagination = ({
     <ul className={styles.list}>
       {pages.map((item) => {
         const page = ++item;
+        const pageUrl =
+          page !== 1 ? `/${entity}/${slug}/page${page}` : `/${entity}/${slug}`;
 
         return (
           <li key={page} className={page === currentPage ? styles.current : ''}>
-            <Link
-              href={`/${entity}/${slug}/page${page}`}
-              className={styles.link}
-            >
+            <Link href={pageUrl} className={styles.link}>
               {page}
             </Link>
           </li>
