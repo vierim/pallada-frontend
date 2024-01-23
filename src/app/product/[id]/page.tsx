@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 
 import { PageHeader } from '@/shared/ui/page-header';
@@ -11,26 +12,36 @@ import {
 
 import styles from './page.module.css';
 
-type ProductPageProps = {
+type Props = {
   params: {
     id: string;
   };
 };
 
-export default async function ProductPage({
+export async function generateMetadata({
   params: { id },
-}: ProductPageProps) {
+}: Props): Promise<Metadata> {
+  const { name, meta_description } = await getProductData(
+    parseInt(id)
+  );
 
-  const {
-    name,
-    pic,
-    price,
-    brand,
-    pack,
-    delay }
-    = await getProductData(parseInt(id));
+  const title = `${name} - купить оптом в Москве`;
 
-  const relativeProducts = await getRelativeProductsByBrand(parseInt(id), brand.id);
+  return {
+    title: title,
+    description: meta_description || '',
+  };
+}
+
+export default async function ProductPage({ params: { id } }: Props) {
+  const { name, pic, price, brand, pack, delay } = await getProductData(
+    parseInt(id)
+  );
+
+  const relativeProducts = await getRelativeProductsByBrand(
+    parseInt(id),
+    brand.id
+  );
 
   return (
     <div>

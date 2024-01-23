@@ -1,45 +1,59 @@
+import { Metadata } from 'next';
+
 import { PageHeader } from '@/shared/ui/page-header';
+import { TextWrapper } from "@/widgets/text-wrapper";
 import { ProductsList } from '@/entities/product/ui/products-list';
 import { Pagination } from '@/widgets/pagination';
 
-import { getProductsByBrand } from "@/entities/product/utils";
+import { getVendorData } from '@/entities/vendor/utils';
+import { getProductsByBrand } from '@/entities/product/utils';
 
-type VendorPageProps = {
+type Props = {
   params: {
-    slug: string;
+    slug: string[];
   };
 };
 
-async function getVendor(slug: string) {
-  const res = await fetch(
-    `https://api.pallada-mo.ru/api/brands?filters[slug][$in]=${slug}`
-  );
+export async function generateMetadata({
+  params: { slug: items },
+}: Props): Promise<Metadata> {
+  const [slug, pageNumber] = items;
+  const { header, meta_title, meta_description } = await getVendorData(slug);
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
-  return res.json();
+  return {
+    title: pageNumber
+      ? `${header} - страница ${pageNumber.slice(4)}`
+      : meta_title,
+    description: meta_description || '',
+  };
 }
 
-export default async function VendorPage({
-  params: { slug },
-}: VendorPageProps) {
+export default async function VendorPage({ params: { slug: items } }: Props) {
+  const [slug, pageNumber] = items;
 
-  const { data: vendor } = await getVendor(slug);
-  const { products } = await getProductsByBrand(
-    slug[0],
-    '1'
+  const vendor = await getVendorData(slug);
+  const { products, pagination } = await getProductsByBrand(
+    slug,
+    pageNumber ? pageNumber.slice(4) : '1'
   );
 
   return (
     <>
-      <PageHeader>{vendor[0]?.attributes.name}</PageHeader>
+      <PageHeader>
+        {pageNumber
+          ? `${vendor.header} - страница ${pageNumber.slice(4)}`
+          : vendor.header}
+      </PageHeader>
+
+      {!pageNumber && vendor.desc && <TextWrapper text={vendor.desc} />}
+
       <ProductsList products={products} />
 
-      {/*{pagination.pageCount > 1 && (*/}
-      {/*  <Pagination entity="vendors" slug={slug} pagination={pagination} />*/}
-      {/*)}*/}
+      {pagination.pageCount > 1 && (
+        <Pagination entity="vendors" slug={slug} pagination={pagination} />
+      )}
+
+      {!pageNumber && vendor.text && <TextWrapper text={vendor.text} />}
     </>
   );
 }
