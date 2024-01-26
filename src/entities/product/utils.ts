@@ -118,3 +118,17 @@ export async function getRelativeProductsByBrand(
 
   return ejectManyProductsData(res);
 }
+
+export async function getProductsOnMainPage () {
+  const request = await fetch(
+    `https://api.pallada-mo.ru/api/products?populate=*&filters[onMainPage][$eq]=true&pagination[page]=1&pagination[pageSize]=15`
+  );
+
+  if (!request.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  const res: ManyProductsResponse = await request.json();
+
+  return ejectManyProductsData(res);
+}

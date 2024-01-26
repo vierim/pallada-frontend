@@ -1,20 +1,18 @@
 import { ProductsList } from '@/entities/product/ui/products-list';
-import type { Product } from '@/entities/product/types';
+import { getProductsOnMainPage } from "@/entities/product/utils";
 
 import styles from './popular-products.module.css';
 
-type PopularProductsProps = {
-  headline?: string;
-  products: Product[];
-};
+export const PopularProducts = async () => {
+  const products = await getProductsOnMainPage();
 
-export const PopularProducts = ({
-  headline,
-  products,
-}: PopularProductsProps) => {
+  if(products.length === 0) {
+    return;
+  }
+
   return (
-    <section className={styles.container}>
-      {headline && headline?.length > 0 && <h2>{headline}</h2>}
+    <section className={`${styles.container} page-section`}>
+      {<h2>Популярные кондитерские изделия</h2>}
       {products.length > 0 && <ProductsList products={products} />}
     </section>
   );

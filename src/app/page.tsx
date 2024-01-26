@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 
 import { Cover } from '@/widgets/cover';
 import {
-  CatalogSection,
-  TextSection,
-} from '@/widgets/page-sections';
+  CatalogSection, PopularProducts,
+  TextSection
+} from "@/widgets/page-sections";
 
 import styles from './page.module.css';
 
@@ -25,6 +25,7 @@ export default async function Home() {
         text={mainPage.text.content}
         headline={mainPage.text.headline}
       />
+      <PopularProducts />
     </main>
   );
 }
